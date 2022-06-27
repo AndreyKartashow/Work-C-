@@ -21,17 +21,14 @@
                 max = number2;      
                 min = number1;      
             }
-            else { }
             if (number3 > max)
             {
                 max = number3;
             }
-            else { }
             if (number3 < min)
             {
                 min = number3;
             }
-            else { }
             Console.WriteLine ($"Наибольшее число: {max}");
             Console.WriteLine ($"Наименьшее число: {min}");
         }
