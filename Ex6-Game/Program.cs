@@ -1,4 +1,4 @@
-﻿namespace HelloWorld
+﻿namespace Game
 {
     class Program
     {
@@ -24,7 +24,7 @@
                     coll[index] = '-';
                     index ++;
                 }
-            }  
+            }
 /*          string question1 = "Отгадай фамилию создателя ядра ОС <Linyx>";
             string question2 = "Отгадай фамилию создателя ядра ОС <Linyx>";
             string question3 = "Отгадай фамилию создателя ядра ОС <Linyx>";
@@ -64,18 +64,13 @@
                         PrintArray (ArrayUserAnsverChar);
                         Console.WriteLine ();
                     }
-                if (ArrayUserAnsverChar[0] == ArraySystemAnswerChar[0] && 
-                    ArrayUserAnsverChar[1] == ArraySystemAnswerChar[1] && 
-                    ArrayUserAnsverChar[2] == ArraySystemAnswerChar[2] && 
-                    ArrayUserAnsverChar[3] == ArraySystemAnswerChar[3] && 
-                    ArrayUserAnsverChar[4] == ArraySystemAnswerChar[4] && 
-                    ArrayUserAnsverChar[5] == ArraySystemAnswerChar[5] && 
-                    ArrayUserAnsverChar[6] == ArraySystemAnswerChar[6] && 
-                    ArrayUserAnsverChar[7] == ArraySystemAnswerChar[7] && 
-                    ArrayUserAnsverChar[8] == ArraySystemAnswerChar[8] )
+                string s1 = String.Concat<char>(ArraySystemAnswerChar);
+                string s2 = String.Concat<char>(ArrayUserAnsverChar);
+                int result = String.Compare(s1, s2);
+                if (result == 0)
                 {
-                    goto End;
-                }  
+                   goto End; 
+                }
             }
             End: 
             Console.WriteLine ("Вы отгадали слово!");  
