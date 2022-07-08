@@ -15,14 +15,13 @@
                 double number2 = Convert.ToInt32(Console.ReadLine());
                 double result = NumberToPower(number1, number2);
                 Console.WriteLine($"{number1} ^ {number2} = {result}"); 
-                // Console.WriteLine ("Для выхода из программы зажмите клавиши <Ctrl>+<C>");
-                Console.WriteLine ("Для выхода из программы зажмите клавиши <Esc>");   // <Ctrl>+<C>
+                Console.WriteLine ("Для выхода из программы зажмите клавиши <Esc>");  
                 cki = Console.ReadKey();
                 Console.Clear();
             }
             while (cki.Key != ConsoleKey.Escape);
         }
-        
+
         // Метод возведения числа в степень
         static double NumberToPower (double number1, double number2)
         {
