@@ -49,9 +49,10 @@
                 {
                     Console.Write($"{array[i]} ");
                 }
+                Console.WriteLine();
             }
             
-            // Метод печати квадратов массива массива
+            // Метод определения суммы элементов, стоящих на нечетных позициях в массиве
             int SummElementOddPositionArray(int[] array)
             {       
                 int summ = 0;
