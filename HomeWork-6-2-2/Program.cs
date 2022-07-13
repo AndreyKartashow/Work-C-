@@ -44,15 +44,21 @@
                     double[,] unionNatrix = UnionMatrix(matrixArgument);
                     PrintMatrix(unionNatrix);
 
+                    Console.WriteLine("Ваша транспонированая матрица");
+                    double[,] transposedMatrix = TransposedMatrix(unionNatrix);
+                    PrintMatrix(transposedMatrix);
+
                     Console.WriteLine("Ваша обратная матрица");
-                    double[,] reversNatrix = ReversMatrix(unionNatrix, determinant);
+                    double[,] reversNatrix = ReversMatrix(transposedMatrix, determinant);
                     PrintMatrix(reversNatrix);
 
                     double[,] unknownMembers = MatrixUnknownMembers(reversNatrix, matrixFreeMembre);
-                    double X = Math.Round(unknownMembers[0,0], 3, MidpointRounding.ToEven);
-                    double Y = Math.Round(unknownMembers[1,0]);
-                    Console.WriteLine($"Аргумент X соответствует значению = {X}");
-                    Console.WriteLine($"Аргумент Y соответствует значению = {Y}");
+                    // double X = Math.Round(unknownMembers[0,0], 3, MidpointRounding.ToEven);
+                    // double Y = Math.Round(unknownMembers[1,0]);
+                    // Console.WriteLine($"Аргумент X соответствует значению = {X}");
+                    // Console.WriteLine($"Аргумент Y соответствует значению = {Y}");
+                    Console.WriteLine($"Аргумент X соответствует значению = {unknownMembers[0,0]}");
+                    Console.WriteLine($"Аргумент Y соответствует значению = {unknownMembers[1,0]}");
                 }
                 else
                 {
@@ -93,6 +99,16 @@
             return unionNatrix;
         }
 
+        static double[,] TransposedMatrix(double[,] unionMatrix)
+        {
+            double[,] transposedMatrix = new double[2,2];
+            transposedMatrix[0,0] = unionMatrix[0,0];
+            transposedMatrix[0,1] = unionMatrix[1,0];
+            transposedMatrix[1,0] = unionMatrix[0,1];
+            transposedMatrix[1,1] = unionMatrix[1,1];
+            return transposedMatrix;
+        }
+
         static double[,] ReversMatrix(double[,] matrix, double determinant)
         {
             double[,] reversNatrix = new double[2,2];
@@ -100,7 +116,7 @@
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    reversNatrix[i,j] = matrix[i,j] * (1/determinant);
+                    reversNatrix[i,j] = matrix[i,j] * (1 / determinant);
                 }
             }
             return reversNatrix;
@@ -109,8 +125,8 @@
         static double[,] MatrixUnknownMembers(double[,] reversMatrix, double[,] freeMembersMatrix)
         {
             double[,] unknownMembers = new double[2,1];
-            unknownMembers[0,0] = reversMatrix[0,0] * freeMembersMatrix[0,0] + reversMatrix[0,1] * freeMembersMatrix[0,0];
-            unknownMembers[1,0] = reversMatrix[1,0] * freeMembersMatrix[1,0] + reversMatrix[1,1] * freeMembersMatrix[1,0];
+            unknownMembers[0,0] = (reversMatrix[0,0] * freeMembersMatrix[0,0]) + (reversMatrix[0,1] * freeMembersMatrix[1,0]);
+            unknownMembers[1,0] = (reversMatrix[1,0] * freeMembersMatrix[0,0]) + (reversMatrix[1,1] * freeMembersMatrix[1,0]);
             return unknownMembers;
         }
     }
