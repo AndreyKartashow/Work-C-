@@ -32,24 +32,7 @@ namespace HomeWork
                 Console.Clear();
             }
         }
-        public static void ContinueOrExitProgram()
-        {
-            Console.WriteLine("Нажмите клавишу <Esc> для выхода или любую другую для продолжения");
-            ConsoleKeyInfo continueOrExitProgram = new ConsoleKeyInfo();
-            for ( ; ; )
-            {
-                continueOrExitProgram = Console.ReadKey();
-                if (continueOrExitProgram.Key == ConsoleKey.Enter)
-                {
-                    break;
-                }
-                if (continueOrExitProgram.Key == ConsoleKey.Escape)
-                {
-                    Console.Clear();
-                    return; 
-                }
-            }
-        }
+
     }
     public class ArrayNumber
     {
