@@ -88,5 +88,24 @@
             }
         } 
 
+        // 2 вариант метода поиска
+        public static void SearshPositionArrayVar2(int[,] array, int[] positionSearsh)
+        {
+            if (positionSearsh[0] < 0 & positionSearsh[0] > array.GetLength(0)-1 
+            & positionSearsh[1] < 0 & positionSearsh[1] > array.GetLength(1)-1 )
+            {
+                Console.WriteLine("Такой позиции нет");
+            }
+            else
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    if (positionSearsh[0] == i & positionSearsh[1] == j)
+                    Console.WriteLine($"Ваша ячейка содержит следующее значение: {array[i, j]}");
+                }
+            }      
+        }
+
     }
 }
