@@ -1,4 +1,4 @@
-﻿/* namespace Game
+﻿namespace Game
 {
     class Program
     {
@@ -15,7 +15,7 @@
             {
                 listNumber.Add(new Random().Next(1, sizeList + 1));
                 listNumber = listNumber.Distinct().OrderBy(n => n).ToList();
-                // PrintList(listNumber);
+                PrintList(listNumber);
             }
 
             int[,] arrayUnic = new int[str, row];
@@ -26,60 +26,42 @@
             int m = 0;                                                  // количество заполненых строк
             int n = 0;                                                  // количество заполненых столбиков
 
-            int positionLastStringRow = arrayUnic.GetUpperBound(0) - m; // индекс крайней строки        3=3-0
-            int positionLastRow = arrayUnic.GetUpperBound(1) - n;       // индекс крайнего столбика     3=3-0
-
             int lengthString = arrayUnic.GetLength(1);                  // длина строки                 4
             int lengthRow = arrayUnic.GetLength(0);                     // длина столбика               4
-
-            int currentLengthString = lengthString - n;                 // текущая длина строки         4=4-0
-            int currentLengthRow = lengthRow - m;                       // тукущая длина столбика       4=4-0
-
-            int firstString = lengthString - currentLengthString;       // индекс первой строки         0=4-4
-            int firstRow = lengthRow - currentLengthRow;                // индекс первого столбика      0=4-4 
+            PrintArray(arrayUnic);
+            Console.WriteLine();
 
             while (k != sizeList)
             {
-
-                while (j < currentLengthString)
+                for (j = 0; j < lengthString; j++)
                 {
-                    arrayUnic[firstString, firstRow + j] = listNumber[k];
-                    j++;
+                    arrayUnic[m, n + j] = listNumber[k];
                     k++;
                 }
-                m++;                                                    // заполненых строк             1
-                currentLengthRow = lengthRow - m;                       // текащая длина столбика       3=4-1
+                m++;                                                    // заполненых строк             1   
 
-
-                while (i < currentLengthRow)
+                for (i = 0; i < lengthRow - m; i++)
                 {
-                    arrayUnic[currentLengthRow + i, positionLastRow] = listNumber[k];
-                    i++;
+                    arrayUnic[m + i, lengthString - m] = listNumber[k];
                     k++;
                 }
                 n++;                                                    // заполненых столбиков         1
-                currentLengthString = lengthString - n;                 // текущая длина строки         3=4-1
+                k++;
 
-
-                while (j < currentLengthString)
+                for (j = 0; j < lengthString - n; j++)   
                 {
-                    arrayUnic[currentLengthRow, currentLengthString - 1 - j] = listNumber[k];
-                    j++;
+                    arrayUnic[lengthRow - m, lengthString - j - n - 1] = listNumber[k-1];
                     k++;
                 }
                 m++;                                                    // заполненых строк             2
-                currentLengthRow = lengthRow - m;                       // текущая длина столбика       2=4-2
+                
 
-
-                while (i < currentLengthRow)
+                for (i = 0; i < lengthRow - m; i++)
                 {
-                    arrayUnic[lengthString - i,  currentLengthRow          ] = listNumber[k];
-                    i++;
+                    arrayUnic[lengthRow - m - i, n - 1] = listNumber[k-1];
                     k++;
                 }
-                j++;
-                currentSizeString = sizeString - j;
-
+                n++;
 
             }
 
@@ -112,5 +94,5 @@
             }
         }
 
-    }
-} */
+    } 
+}
